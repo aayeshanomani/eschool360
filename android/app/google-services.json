@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "249467067709",
+    "firebase_url": "https://edukaizen-a82ad.firebaseio.com",
+    "project_id": "edukaizen-a82ad",
+    "storage_bucket": "edukaizen-a82ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249467067709:android:2a99ccbb9512d73312f954",
+        "android_client_info": {
+          "package_name": "com.edu.eschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249467067709-4ldffv98oucpr3fn4cmb5uu3vkbtm4f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAwyqNhZLZe6k_Li1V40dPz1KikGj9n0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249467067709-4ldffv98oucpr3fn4cmb5uu3vkbtm4f9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "249467067709-iv962oqtkuush8i59fdlo78bme29g9ch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.edu.eschool"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249467067709:android:9ee2050ee5d4c5d812f954",
+        "android_client_info": {
+          "package_name": "com.edu.eschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249467067709-4ldffv98oucpr3fn4cmb5uu3vkbtm4f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAwyqNhZLZe6k_Li1V40dPz1KikGj9n0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249467067709-4ldffv98oucpr3fn4cmb5uu3vkbtm4f9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "249467067709-iv962oqtkuush8i59fdlo78bme29g9ch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.edu.eschool"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
