@@ -95,7 +95,7 @@ flutter:
     - assets/images/placeholderimage.png
     - assets/images/library.jpg
     - assets/images/alumni.jpg
-    - assets/images/hotels.jpg
+    - assets/images/hotels.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

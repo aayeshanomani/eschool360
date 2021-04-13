@@ -1,4 +1,6 @@
 import 'dart:io' show Platform;
+import 'package:eschool360/services/auth.dart';
+import 'package:eschool360/services/database.dart';
 import 'package:flutter/material.dart';
 import '../utils/api.dart';
 
@@ -128,9 +130,10 @@ class SettingsActivityState extends State<SettingsActivity> {
 
   void logout() {
     prefs.clear();
+    Auth().signOut();
     Navigator.pop(context);
-    Navigator.of(context).pushReplacement(
-        new MaterialPageRoute(builder: (BuildContext context) => new Login()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Login()));
   }
 
   hostelsPage(BuildContext context, Widget page) async {
@@ -338,161 +341,7 @@ class SettingsActivityState extends State<SettingsActivity> {
                     new Container(
                       height: 30,
                     ),
-                    new Container(
-                      margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                      child: new Text(
-                        "GET IN TOUCH",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                    new GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    new SupportActivity(true)));
-                      },
-                      child: new Container(
-                        color: Colors.transparent,
-                        height: 30,
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            new Icon(Icons.chat),
-                            new Container(
-                              width: 20,
-                            ),
-                            new Expanded(
-                              child: new Text("Feedback & Support"),
-                            ),
-                            new Icon(
-                              Icons.arrow_right,
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    new Divider(),
-                    new GestureDetector(
-                      onTap: () {
-                        if (Platform.isAndroid) {
-                          launchURL(
-                              "https://play.google.com/store/apps/details?id=com.saikrishna.cloudpg");
-                        } else {}
-                      },
-                      child: new Container(
-                        color: Colors.transparent,
-                        height: 30,
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            new Icon(Icons.star),
-                            new Container(
-                              width: 20,
-                            ),
-                            new Expanded(
-                              child: new Text("Rate Us"),
-                            ),
-                            new Icon(
-                              Icons.arrow_right,
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    new Container(
-                      margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                      child: new Text(
-                        "ABOUT",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                    new GestureDetector(
-                      onTap: () {
-                        launchURL(CONTACT.TERMS_URL);
-                      },
-                      child: new Container(
-                        color: Colors.transparent,
-                        height: 30,
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            new Icon(Icons.featured_play_list),
-                            new Container(
-                              width: 20,
-                            ),
-                            new Expanded(
-                              child: new Text("Terms of Use"),
-                            ),
-                            new Icon(
-                              Icons.arrow_right,
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    new Divider(),
-                    new GestureDetector(
-                      onTap: () {
-                        launchURL(CONTACT.PRIVACY_URL);
-                      },
-                      child: new Container(
-                        color: Colors.transparent,
-                        height: 30,
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            new Icon(Icons.vpn_key),
-                            new Container(
-                              width: 20,
-                            ),
-                            new Expanded(
-                              child: new Text("Privacy Policy"),
-                            ),
-                            new Icon(
-                              Icons.arrow_right,
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    new Divider(),
-                    new GestureDetector(
-                      onTap: () {
-                        launchURL(CONTACT.ABOUT_URL);
-                      },
-                      child: new Container(
-                        color: Colors.transparent,
-                        height: 30,
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            new Icon(Icons.info),
-                            new Container(
-                              width: 20,
-                            ),
-                            new Expanded(
-                              child: new Text("About Us"),
-                            ),
-                            new Icon(
-                              Icons.arrow_right,
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+
                     new Container(
                       height: 30,
                     ),
@@ -505,15 +354,7 @@ class SettingsActivityState extends State<SettingsActivity> {
                         logout();
                       },
                     ),
-                    new Center(
-                      child: new Text(
-                        "\n\nMade with :) in Hyderabad, India\nCopyright © 2019 Cloud PG\n\n" +
-                            (Platform.isAndroid
-                                ? APPVERSION.ANDROID
-                                : APPVERSION.IOS),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+
                     new Container(
                       height: 30,
                     ),

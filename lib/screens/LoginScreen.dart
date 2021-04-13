@@ -3,6 +3,7 @@ import 'package:eschool360/services/database.dart';
 import 'package:eschool360/services/helper.dart';
 import 'package:eschool360/styles/common.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import '../wrapper.dart';
 
@@ -15,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool show = false;
   String password = "";
   Auth auth = Auth();
+  bool loggedIn = false;
   TextEditingController textEditingController,
       usernameController,
       passwordController;
@@ -108,6 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
               if (schoolID != "") show = true;
             });
             if (word == 'LOGIN') {
+              loggedIn = !loggedIn;
               if (!await database.checkSchool(schoolID)) {
                 //textEditingController.text = "";
                 print("login");
@@ -153,6 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (BuildContext context) => Wrapper()));
               }
+              loggedIn = !loggedIn;
             }
             if (word == 'CONTINUE') {
               print(await database.checkSchool(schoolID));
@@ -189,67 +193,70 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Center(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: screenHeight(context),
-                width: double.infinity,
-              ),
-              Column(
-                children: <Widget>[
-                  SizedBox(height: 100,),
-                  Center(
-                    child: Container(
-                      //color: Colors.white,
-                      child: Image.asset(
-                        "assets/images/logo.jpg",
-                        fit: BoxFit.cover,
-                        //width: double.infinity,
-                        height: 200,
+      body: ModalProgressHUD(
+        inAsyncCall: loggedIn,
+        child: SingleChildScrollView(
+          child: Center(
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: screenHeight(context),
+                  width: double.infinity,
+                ),
+                Column(
+                  children: <Widget>[
+                    SizedBox(height: 100,),
+                    Center(
+                      child: Container(
+                        //color: Colors.white,
+                        child: Image.asset(
+                          "assets/images/logo.jpg",
+                          fit: BoxFit.cover,
+                          //width: double.infinity,
+                          height: 200,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Positioned(
+                  top: screenHeight(context, dividedBy: 2.1),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: bluecolor,
+                      borderRadius: borderRadius,
+                    ),
+                    height: screenHeight(context, dividedBy: 1.3),
+                    width: screenWidth(context),
+                    child: Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "Login to your Account!",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 25, color: whitecolor),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          schoolId(),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          if (!show) button("CONTINUE") else userpass(),
+                          SizedBox(
+                            height: 15,
+                          )
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
-              Positioned(
-                top: screenHeight(context, dividedBy: 2.1),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: bluecolor,
-                    borderRadius: borderRadius,
-                  ),
-                  height: screenHeight(context, dividedBy: 1.3),
-                  width: screenWidth(context),
-                  child: Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "Login to your Account!",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 25, color: whitecolor),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        schoolId(),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        if (!show) button("CONTINUE") else userpass(),
-                        SizedBox(
-                          height: 15,
-                        )
-                      ],
-                    ),
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -101,7 +101,7 @@ class ProActivityState extends State<ProActivity> {
               new SizedBox(
                 width: 100,
                 height: 100,
-                child: new Image.asset('assets/images/hotels.jpg'),
+                child: new Image.asset('assets/images/hotels.png'),
               ),
               new Container(
                 color: Colors.transparent,

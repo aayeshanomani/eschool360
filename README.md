@@ -25,7 +25,6 @@ An app for schools and colleges
 - transport management
 - online classes
 - hr and payroll
-- communication
 - sports
 - franchise management
 - admission management

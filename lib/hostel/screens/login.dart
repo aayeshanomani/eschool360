@@ -1,4 +1,11 @@
+import 'package:eschool360/screens/Information.dart';
+import 'package:eschool360/screens/LoginScreen.dart';
+import 'package:eschool360/screens/settings.dart';
+import 'package:eschool360/services/auth.dart';
+import 'package:eschool360/services/helper.dart';
+import 'package:eschool360/styles/common.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 // import 'package:onesignal_flutter/onesignal_flutter.dart';
@@ -6,6 +13,7 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 
+import '../../wrapper.dart';
 import './dashboard.dart';
 import '../utils/models.dart';
 import '../utils/api.dart';
@@ -36,52 +44,54 @@ class LoginState extends State<Login> {
   void initState() {
     super.initState();
 
-    // OneSignal.shared.getPermissionSubscriptionState().then((status) {
-    //   if (status.subscriptionStatus.subscribed) {
-    //     onesignalUserId = status.subscriptionStatus.userId;
-    //   }
-    // });
+    
+      // OneSignal.shared.getPermissionSubscriptionState().then((status) {
+      //   if (status.subscriptionStatus.subscribed) {
+      //     onesignalUserId = status.subscriptionStatus.userId;
+      //   }
+      // });
 
-    if (Platform.isAndroid) {
-      headers["appversion"] = APPVERSION.ANDROID;
-      if (kReleaseMode) {
-        headers["apikey"] = APIKEY.ANDROID_LIVE;
+      if (Platform.isAndroid) {
+        headers["appversion"] = APPVERSION.ANDROID;
+        if (kReleaseMode) {
+          headers["apikey"] = APIKEY.ANDROID_LIVE;
+        } else {
+          headers["apikey"] = APIKEY.ANDROID_TEST;
+        }
       } else {
-        headers["apikey"] = APIKEY.ANDROID_TEST;
+        headers["appversion"] = APPVERSION.IOS;
+        if (kReleaseMode) {
+          headers["apikey"] = APIKEY.IOS_LIVE;
+        } else {
+          headers["apikey"] = APIKEY.IOS_TEST;
+        }
       }
-    } else {
-      headers["appversion"] = APPVERSION.IOS;
-      if (kReleaseMode) {
-        headers["apikey"] = APIKEY.IOS_LIVE;
-      } else {
-        headers["apikey"] = APIKEY.IOS_TEST;
-      }
-    }
-    Future<bool> prefInit = initSharedPreference();
-    prefInit.then((onValue) {
-      if (onValue) {
-        if (prefs.getString("username") != null &&
-            prefs.getString("username").length > 0) {
-          adminName = prefs.getString("username");
-          adminEmailID = prefs.getString("email");
-          hostelID = prefs.getString("hostelID");
-          admin = prefs.getString("admin");
-          adminID = prefs.getString("adminID");
-          hostelName = prefs.getString("hostelName");
-          amenities = prefs.getString("amenities").split(",");
-          Navigator.of(context).pushReplacement(new MaterialPageRoute(
-              builder: (BuildContext context) => new DashBoardActivity()));
+      Future<bool> prefInit = initSharedPreference();
+      prefInit.then((onValue) {
+        if (onValue) {
+          if (prefs.getString("username") != null &&
+              prefs.getString("username").length > 0) {
+            adminName = prefs.getString("username");
+            adminEmailID = prefs.getString("email");
+            hostelID = prefs.getString("hostelID");
+            admin = prefs.getString("admin");
+            adminID = prefs.getString("adminID");
+            hostelName = prefs.getString("hostelName");
+            amenities = prefs.getString("amenities").split(",");
+            Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                builder: (BuildContext context) => new DashBoardActivity()));
+          } else {
+            setState(() {
+              loggedIn = false;
+            });
+          }
         } else {
           setState(() {
             loggedIn = false;
           });
         }
-      } else {
-        setState(() {
-          loggedIn = false;
-        });
-      }
-    });
+      });
+    
   }
 
   void login() {
@@ -155,6 +165,7 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      
       body: ModalProgressHUD(
         child: new Container(
           margin: new EdgeInsets.fromLTRB(
@@ -168,7 +179,7 @@ class LoginState extends State<Login> {
               new SizedBox(
                 width: 100,
                 height: 100,
-                child: new Image.asset('assets/images/hotels.jpg'),
+                child: new Image.asset('assets/images/hotels.png'),
               ),
               new Center(
                 child: new Container(
@@ -228,7 +239,7 @@ class LoginState extends State<Login> {
                 child: new MaterialButton(
                   height: 40,
                   child: new Text(
-                    "Don't have an account yet?\nSign Up.",
+                    "Don't have a hostelID yet?\nSign Up.",
                     textAlign: TextAlign.center,
                   ),
                   onPressed: () {
@@ -236,6 +247,24 @@ class LoginState extends State<Login> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => new SignupActivity()));
+                  },
+                ),
+              ),
+              new Container(
+                height: 28,
+              ),
+              new Container(
+                child: new MaterialButton(
+                  height: 40,
+                  child: new Text(
+                    "Exit",
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => new LoginScreen()));
                   },
                 ),
               ),
