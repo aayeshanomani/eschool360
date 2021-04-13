@@ -1,16 +1,39 @@
 # eschool360
 
-A new Flutter project.
+An app for schools and colleges
 
-## Getting Started
+## eschool360 includes
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- hostel management
+- online classes
+- counselling for students
+- parent teacher interactions
+- library management
+- homework diary
+- automatic attendance
+- video lectures
+- report card management
+- progress analysis through machine learning
+- chatbox for easy communication
+- alumni interactions
+- staff management
+- parent management
+- purchase management
+- vendor management
+- asset management
+- finance and accounting
+- transport management
+- online classes
+- hr and payroll
+- communication
+- sports
+- franchise management
+- admission management
+- inventory management
+- visitor management
+- health and infirmary
+- safety management
+- CRM - Customer relationship management
+- canteen management
+- reporting 
+- campus placements
