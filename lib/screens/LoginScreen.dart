@@ -145,6 +145,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       username, 'hostelManager')) {
                     type = 'hostelManager';
                     HelperFunc.saveType('hostelManager');
+                  } else if (!await database.checkStudent(
+                      username, 'admin')) {
+                    type = 'admin';
+                    HelperFunc.saveType('admin');
                   } else {
                     type = 'principal';
                     HelperFunc.saveType('principal');

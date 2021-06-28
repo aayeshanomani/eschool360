@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eschool360/admin/home.dart';
 import 'package:eschool360/alumniHome.dart';
 import 'package:eschool360/hostel/screens/login.dart';
 import 'package:eschool360/models/user.dart';
@@ -50,6 +51,8 @@ class _WrapperState extends State<Wrapper> {
         return LibrarianHome();
       } else if (type == 'hostelManager') {
         return Login();
+      } else if (type == 'admin') {
+        return AdminHome();
       } else if (type == 'alumni') {
         return AlumniHome();
       } else {

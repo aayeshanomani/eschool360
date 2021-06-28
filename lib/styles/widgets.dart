@@ -153,7 +153,7 @@ class about extends StatelessWidget {
                       classname +
                       ' | Section: ' +
                       snapshot.data.documents[0]['section'].toString()
-                  : "\nAdmin", //TODO
+                  : type, //TODO
               style: TextStyle(
                 fontSize: 16,
               ),
