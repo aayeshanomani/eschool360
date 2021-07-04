@@ -82,6 +82,13 @@ class Database {
         .setData({field: subject}, merge: true);
   }
 
+  addStudent(String username, Map data) {
+    Firestore.instance
+        .collection(schoolID)
+        .document(username)
+        .setData(data, merge: true);
+  }
+
   delHomework(String std) {
     Firestore.instance
         .collection(schoolID)

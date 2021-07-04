@@ -1,5 +1,10 @@
 import 'package:eschool360/Principal/NoticeBoard.dart';
+import 'package:eschool360/admin/addStudent.dart';
+import 'package:eschool360/admin/addTeacher.dart';
+import 'package:eschool360/admin/leaveApplications.dart';
 import 'package:eschool360/admin/schoolProgress.dart';
+import 'package:eschool360/admin/transportation.dart';
+import 'package:eschool360/admin/vistorLog.dart';
 import 'package:eschool360/screens/Attendance.dart';
 import 'package:eschool360/screens/CommonNotice.dart';
 import 'package:eschool360/screens/HomeScreen.dart';
@@ -210,6 +215,160 @@ class _AdminHomeState extends State<AdminHome> {
                                             Container(
                                               child: Center(
                                                   child: Text('Notice Board',
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                      ))),
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              width: screenWidth(context,
+                                                  dividedBy: 2.2),
+                                              height: 90,
+                                            ),
+                                          ],
+                                        ),
+                                        //padding: EdgeInsets.all(20.0),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      RawMaterialButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          AddStudent()));
+                                        },
+                                        elevation: 6.0,
+                                        fillColor: Colors.white,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              child: Center(
+                                                  child: Text('Add Student',
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                      ))),
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              width: screenWidth(context,
+                                                  dividedBy: 2.3),
+                                              height: 90,
+                                            ),
+                                          ],
+                                        ),
+                                        //padding: EdgeInsets.all(20.0),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                          //side: BorderSide(
+                                          //color: Colors.indigo[600])
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      RawMaterialButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddTeacher()));
+                                        },
+                                        elevation: 6.0,
+                                        fillColor: Colors.white,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              child: Center(
+                                                  child: Text('Add Teacher',
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                      ))),
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              width: screenWidth(context,
+                                                  dividedBy: 2.2),
+                                              height: 90,
+                                            ),
+                                          ],
+                                        ),
+                                        //padding: EdgeInsets.all(20.0),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      RawMaterialButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          VisitorLog()));
+                                        },
+                                        elevation: 6.0,
+                                        fillColor: Colors.white,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              child: Center(
+                                                  child: Text('Log in Visitor',
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                      ))),
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              width: screenWidth(context,
+                                                  dividedBy: 2.3),
+                                              height: 90,
+                                            ),
+                                          ],
+                                        ),
+                                        //padding: EdgeInsets.all(20.0),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                          //side: BorderSide(
+                                          //color: Colors.indigo[600])
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      RawMaterialButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ManageTransport()));
+                                        },
+                                        elevation: 6.0,
+                                        fillColor: Colors.white,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              child: Center(
+                                                  child: Text('Transportation',
                                                       style: TextStyle(
                                                         fontSize: 16,
                                                       ))),
@@ -449,7 +608,36 @@ class _AdminHomeState extends State<AdminHome> {
               indent: 20,
               endIndent: 20,
             ),
-            
+            ListTile(
+              dense: true,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LeaveApp()));
+              },
+              title: Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(
+                    Icons.leave_bags_at_home,
+                    color: bluecolor,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Leave Applications",
+                    style: bluetext,
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
             
             SizedBox(
               height: 20,
