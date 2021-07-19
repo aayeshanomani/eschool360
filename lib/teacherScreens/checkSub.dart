@@ -26,6 +26,7 @@ class _CheckSubState extends State<CheckSub> {
       body: StreamBuilder(
           stream: Database().getStudents(),
           builder: (context, snapshot) {
+            if (!snapshot.hasData) return Loading();
             return SingleChildScrollView(
               child: Column(
                 children: <Widget>[

@@ -6,6 +6,7 @@ import 'package:eschool360/styles/widgets.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../loading.dart';
 import '../wrapper.dart';
 import 'Information.dart';
 import 'myProgress.dart';
@@ -42,6 +43,7 @@ class _LibraryState extends State<Library> {
       body: StreamBuilder(
           stream: Database().getDocument(),
           builder: (context, snapshot) {
+            if (!snapshot.hasData) return Loading();
             classname = snapshot.data.documents[0]['class'].toString();
             return SingleChildScrollView(
                 child: Center(

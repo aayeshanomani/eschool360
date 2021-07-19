@@ -15,6 +15,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../loading.dart';
 import '../wrapper.dart';
 import 'CommonNotice.dart';
 import 'Marks.dart';
@@ -55,6 +56,7 @@ class _CounsellorHomeState extends State<CounsellorHome> {
       body: StreamBuilder(
           stream: Database().getDocument(),
           builder: (context, snapshot) {
+            if (!snapshot.hasData) return Loading();
             classname = snapshot.data.documents[0]['class'].toString();
             return SingleChildScrollView(
                 child: Center(

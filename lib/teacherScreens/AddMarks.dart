@@ -5,6 +5,8 @@ import 'package:eschool360/styles/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../loading.dart';
+
 class AddMarks extends StatefulWidget {
   @override
   _AddMarksState createState() => _AddMarksState();
@@ -51,6 +53,7 @@ class _AddMarksState extends State<AddMarks> {
     return StreamBuilder(
         stream: Database().getStudents(),
         builder: (context, snapshot) {
+          if (!snapshot.hasData) return Loading();
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.indigo[900],
@@ -62,7 +65,7 @@ class _AddMarksState extends State<AddMarks> {
                 children: <Widget>[
                   Container(
                     width: double.infinity,
-                    height: screenHeight(context) * 5,
+                    height: screenHeight(context) * 7,
                   ),
                   Container(
                     decoration: BoxDecoration(color: bluecolor),
@@ -76,7 +79,7 @@ class _AddMarksState extends State<AddMarks> {
                   Positioned(
                     top: screenHeight(context, dividedBy: 3.7),
                     child: Container(
-                      height: screenHeight(context) * 4.6,
+                      height: screenHeight(context) * 7,
                       width: screenWidth(context),
                       decoration: BoxDecoration(
                         borderRadius: borderRadius,
@@ -410,6 +413,7 @@ class _AddMarksState extends State<AddMarks> {
     StreamBuilder(
         stream: Database().getMarks(username, exam, sub),
         builder: (context, snapshot) {
+          if (!snapshot.hasData) return Loading();
           setState(() {
             print(snapshot.data.documents[0]['marksObtained'].toString());
             _controller[i] = TextEditingController(

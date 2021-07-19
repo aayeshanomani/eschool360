@@ -4,6 +4,8 @@ import 'package:eschool360/styles/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../loading.dart';
+
 class TeacherAttendance extends StatefulWidget {
   @override
   _TeacherAttendanceState createState() => _TeacherAttendanceState();
@@ -53,6 +55,7 @@ class _TeacherAttendanceState extends State<TeacherAttendance> {
       body: StreamBuilder(
           stream: Database().getStudents(),
           builder: (context, snapshot) {
+            if (!snapshot.hasData) return Loading();
             return SingleChildScrollView(
               child: Stack(
                 children: <Widget>[

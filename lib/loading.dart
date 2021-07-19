@@ -5,26 +5,26 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-          child: Container(
+    return Scaffold(
+      body: Container(
         height: screenHeight(context),
         color: bluecolor,
         child: Column(
-          children: <Widget>[
-            Container
+      children: <Widget>[
+        Container
+        (
+          height: 500,
+          child: Center(
+            child: SpinKitSpinningCircle
             (
-              height: 500,
-              child: Center(
-                child: SpinKitSpinningCircle
-                (
-                  color: whitecolor,
-                  size: 50.0,
-                ),
-              ),
+              color: whitecolor,
+              size: 50.0,
             ),
-            Text('Loading...',
-            style: TextStyle(color: whitecolor),)
-          ],
+          ),
+        ),
+        Text('Loading...',
+        style: TextStyle(color: whitecolor),)
+      ],
         )
       ),
     );

@@ -1,0 +1,51 @@
+Student -
+
+1. Username - s123
+Password - school123
+Name - Arihant
+
+2. Username - sc020
+Password - school@134
+Name - so
+
+To check and search in the chatbox, kindly use the names not the usernames.
+
+Admin -
+Username - ad123
+Password - admin123
+Name - jhdk
+
+Teacher -
+Username - t123
+Password - school@123
+Name - Arihant
+
+Principal -
+Username - p123
+Password - principal
+Name - hsbs
+
+Counsellor -
+Username - c123
+Password - school@123
+Name - CounsellorA
+
+Librarian -
+Username - l123
+Password - school123
+Name - djsb
+
+Alumni -
+Username - a123
+Password - school123
+Name - jdb
+
+Hostel manager -
+Login 1
+Username - hm123
+Password - school123
+Name - hostel manager
+
+Security login 2
+Username - hm123
+Password - hostel123

@@ -4,6 +4,8 @@ import 'package:eschool360/styles/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../loading.dart';
+
 class Conversation extends StatefulWidget {
   const Conversation({this.searchedname, this.chatRoomId});
 
@@ -22,6 +24,7 @@ class _ConversationState extends State<Conversation> {
       child: StreamBuilder(
         stream: Database().getConversationMessages(widget.chatRoomId),
         builder: (context, snapshot) {
+          if (!snapshot.hasData) return Loading();
           return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) {
@@ -137,30 +140,30 @@ class MessageTile extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(vertical: 8),
-      padding: EdgeInsets.only(left: isSendByMe?0:10, right: isSendByMe?10:0),
-      alignment: isSendByMe?Alignment.centerRight:Alignment.centerLeft,
+      padding: EdgeInsets.only(
+          left: isSendByMe ? 0 : 10, right: isSendByMe ? 10 : 0),
+      alignment: isSendByMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: isSendByMe?[
-            const Color(0xff020202),
-            const Color(0xff0D324D)
-          ]:[
-            const Color(0xffBFD3C1),
-            const Color(0xffFFF3B0)
-          ]),
-          borderRadius: isSendByMe? BorderRadius.only
-          (
-            topLeft: Radius.circular(30), 
-            topRight: Radius.circular(30), 
-            bottomLeft: Radius.circular(30)
-          ): BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-            bottomRight: Radius.circular(30)
-          )
+            gradient: LinearGradient(
+                colors: isSendByMe
+                    ? [const Color(0xff020202), const Color(0xff0D324D)]
+                    : [const Color(0xffBFD3C1), const Color(0xffFFF3B0)]),
+            borderRadius: isSendByMe
+                ? BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                    bottomLeft: Radius.circular(30))
+                : BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                    bottomRight: Radius.circular(30))),
+        child: Text(
+          message,
+          style: TextStyle(
+              fontSize: 17, color: isSendByMe ? Colors.white : Colors.black),
         ),
-        child: Text(message, style: TextStyle(fontSize: 17, color: isSendByMe?Colors.white:Colors.black),),
       ),
     );
   }

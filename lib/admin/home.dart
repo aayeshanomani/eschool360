@@ -5,6 +5,7 @@ import 'package:eschool360/admin/leaveApplications.dart';
 import 'package:eschool360/admin/schoolProgress.dart';
 import 'package:eschool360/admin/transportation.dart';
 import 'package:eschool360/admin/vistorLog.dart';
+import 'package:eschool360/loading.dart';
 import 'package:eschool360/screens/Attendance.dart';
 import 'package:eschool360/screens/CommonNotice.dart';
 import 'package:eschool360/screens/HomeScreen.dart';
@@ -65,6 +66,7 @@ class _AdminHomeState extends State<AdminHome> {
       body: StreamBuilder(
           stream: Database().getDocument(),
           builder: (context, snapshot) {
+            if (!snapshot.hasData) return Loading();
             classname = snapshot.data.documents[0]['class'].toString();
             return SingleChildScrollView(
                 child: Center(

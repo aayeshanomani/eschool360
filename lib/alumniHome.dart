@@ -1,3 +1,4 @@
+import 'package:eschool360/loading.dart';
 import 'package:eschool360/screens/Information.dart';
 import 'package:eschool360/screens/chatbot.dart';
 import 'package:eschool360/screens/settings.dart';
@@ -25,6 +26,7 @@ class _AlumniHomeState extends State<AlumniHome> {
       body: StreamBuilder(
           stream: Database().getDocument(),
           builder: (context, snapshot) {
+            if (!snapshot.hasData) return Loading();
             classname = snapshot.data.documents[0]['class'].toString();
             return SingleChildScrollView(
                 child: Center(
@@ -292,8 +294,8 @@ class LineChartSample4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const cutOffYValue = 5.0;
-    const dateTextStyle =
-        TextStyle(fontSize: 10, color: Color(0xffDB5461), fontWeight: FontWeight.bold);
+    const dateTextStyle = TextStyle(
+        fontSize: 10, color: Color(0xffDB5461), fontWeight: FontWeight.bold);
 
     return SizedBox(
       width: 300,
@@ -383,7 +385,8 @@ class LineChartSample4 extends StatelessWidget {
             ),
           ),
           axisTitleData: FlAxisTitleData(
-              leftTitle: AxisTitle(showTitle: true, titleText: 'Value', margin: 4),
+              leftTitle:
+                  AxisTitle(showTitle: true, titleText: 'Value', margin: 4),
               bottomTitle: AxisTitle(
                   showTitle: true,
                   margin: 0,

@@ -73,6 +73,7 @@ class _InformationState extends State<Information> {
         child: StreamBuilder(
           stream: database.getDocument(),
           builder: (context, snapshot) {
+            if (!snapshot.hasData) return Loading();
             Widget textfield(String lable, String hinttext, String field) =>
                 TextField(
                   onChanged: (value) {

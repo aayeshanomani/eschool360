@@ -15,6 +15,7 @@ import 'package:eschool360/teacherScreens/syllabus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../loading.dart';
 import 'common.dart';
 
 Widget homeIcons(String imPath, String text, int dsPath, context) {
@@ -121,6 +122,7 @@ class name extends StatelessWidget {
     return StreamBuilder(
         stream: Database().getDocument(),
         builder: (context, snapshot) {
+          if (!snapshot.hasData) return Loading();
           return Positioned(
             top: screenHeight(context, dividedBy: 12),
             left: screenWidth(context, dividedBy: 2.5),
@@ -142,6 +144,7 @@ class about extends StatelessWidget {
     return StreamBuilder(
         stream: Database().getDocument(),
         builder: (context, snapshot) {
+          if (!snapshot.hasData) return Loading();
           return Positioned(
             top: screenHeight(context, dividedBy: 7),
             left: screenWidth(context, dividedBy: 2.5),
